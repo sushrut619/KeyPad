@@ -3,9 +3,7 @@ import { NativeModule, requireNativeModule } from 'expo';
 import { BluetoothHidProfileModuleEvents } from './BluetoothHidProfile.types';
 
 declare class BluetoothHidProfileModule extends NativeModule<BluetoothHidProfileModuleEvents> {
-  PI: number;
-  hello(): string;
-  setValueAsync(value: string): Promise<void>;
+  getTheme: () => string;
 }
 
 // This call loads the native module object from the JSI.
