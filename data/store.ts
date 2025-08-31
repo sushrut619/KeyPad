@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import counterReducer from './keyboard';
+import keyboardReducer from './keyboard';
 
 export const store = configureStore({
   reducer: {
-    couter: counterReducer,
+    keyboard: keyboardReducer,
   },
 });
 

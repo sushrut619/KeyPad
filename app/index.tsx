@@ -1,9 +1,13 @@
 import { Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
-import Keyboard from "@/components/keyboard";
-import { layout } from "@/assets/keyboardLayouts/alphabetical";
+import Keyboard from "@/components/Keyboard";
+import { RootState } from "@/data/store";
+import { getLayout } from "@/assets/keyboardLayouts";
 
 export default function Index() {
+  const selectedLayout = useSelector((state: RootState) => state.keyboard.layout);
+  const layout = getLayout(selectedLayout);
   return (
     <View
       style={{
