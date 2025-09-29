@@ -1,9 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createSelector } from '@reduxjs/toolkit'
 // import type { PayloadAction } from '@reduxjs/toolkit'
 import { ViewStyle } from 'react-native'
 
-import { layout as alphabeticalLayout } from '@/assets/keyboardLayouts/alphabetical';
-import type { LayoutName } from '@/assets/keyboardLayouts';
+import { layouts, type LayoutName } from '@/assets/keyboardLayouts';
 
 export interface KeyboardState {
   style: ViewStyle
@@ -21,7 +20,7 @@ const initialState: KeyboardState = {
     maxHeight: '50%',
     margin: 4,
   },
-  layout: 'qwerty',
+  layout: 'alphabetical',
 }
 
 export const keyboardSlice = createSlice({
@@ -29,7 +28,17 @@ export const keyboardSlice = createSlice({
   initialState,
   reducers: {
   },
-})
+});
+
+const selectLayoutName = (state: { keyboard: KeyboardState }) => state.keyboard.layout;
+export const getLayout = (name: LayoutName) => layouts[name].layout;
+
+export const KeyboardStateSelectors = {
+  selectKeyboardLayout: createSelector(
+    [selectLayoutName],
+    (selectedLayoutName) => getLayout(selectedLayoutName),
+  ),
+}
 
 // // Action creators are generated for each case reducer function
 export const { } = keyboardSlice.actions

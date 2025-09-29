@@ -1,19 +1,10 @@
-import { Text, View } from "react-native";
+import { Text, View, ViewStyle } from "react-native";
 
 import { SingleKey } from "./SingleKey";
 
-function Keyboard({ layout }: { layout: string[] }) {
+function Keyboard({ layout, keyboardStyle }: { layout: string[], keyboardStyle: ViewStyle }) {
     return (
-        <View style={{
-            flex: 1, 
-            flexWrap: 'wrap', 
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-            gap: 8,
-            maxHeight: '50%',
-            margin: 4,
-        }}>
+        <View style={keyboardStyle}>
             {layout.map((keyLabel) => {
                 return (
                     <SingleKey keyLabel={keyLabel} key={keyLabel}/>

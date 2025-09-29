@@ -13,6 +13,7 @@ export const layouts = {
         id: 'qwerty',
     },
 };
-export type LayoutName = keyof typeof layouts;
 
-export const getLayout = (name: LayoutName) => layouts[name].layout;
+export const predefinedLayouts = Object.keys(layouts);
+
+export type LayoutName = keyof typeof layouts;
