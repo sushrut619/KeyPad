@@ -3,6 +3,7 @@ import { createSlice, createSelector } from '@reduxjs/toolkit'
 import { ViewStyle } from 'react-native'
 
 import { layouts, type LayoutName } from '@/assets/keyboardLayouts';
+import { KeyboardLayoutType } from '@/assets/keyboardLayouts/types';
 
 export interface KeyboardState {
   style: ViewStyle
@@ -27,11 +28,14 @@ export const keyboardSlice = createSlice({
   name: 'keyboard',
   initialState,
   reducers: {
+    setKeyboardLayout(state, action: { payload: LayoutName }) {
+      state.layout = action.payload;
+    },
   },
 });
 
 const selectLayoutName = (state: { keyboard: KeyboardState }) => state.keyboard.layout;
-export const getLayout = (name: LayoutName) => layouts[name].layout;
+export const getLayout = (name: LayoutName): KeyboardLayoutType['keys'] => layouts[name].keys;
 
 export const KeyboardStateSelectors = {
   selectKeyboardLayout: createSelector(
@@ -41,6 +45,6 @@ export const KeyboardStateSelectors = {
 }
 
 // // Action creators are generated for each case reducer function
-export const { } = keyboardSlice.actions
+export const { setKeyboardLayout } = keyboardSlice.actions
 
 export default keyboardSlice.reducer

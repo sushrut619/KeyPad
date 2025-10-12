@@ -1,14 +1,20 @@
 import { layout as alphabeticalLayout, layout } from './alphabetical';
 import { layout as qwertyLayout } from './qwerty';
+import { KeyboardLayoutType } from './types';
 
-export const layouts = {
+const alphabeticalLayoutMap = new Map<string, number>(alphabeticalLayout);
+const qwertyLayoutMap = new Map<string, number>(qwertyLayout);
+
+export const layouts: {
+    [key: string]: KeyboardLayoutType;
+} = {
     alphabetical: {
-        layout: alphabeticalLayout,
+        keys: alphabeticalLayoutMap,
         type: 'predefined',
         id: 'alphabetical',
     },
     qwerty: {
-        layout: qwertyLayout,
+        keys: qwertyLayoutMap,
         type: 'predefined',
         id: 'qwerty',
     },

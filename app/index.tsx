@@ -29,6 +29,7 @@ export default function Index() {
         <Button
           title="Edit layout"
           onPress={() => {
+            router.navigate("/editLayout");
             console.log("Edit layout pressed");
           }}
         />
