@@ -6,6 +6,8 @@ import Keyboard from "@/components/Keyboard";
 import { RootState } from "@/data/store";
 import { KeyboardStateSelectors } from "@/data/keyboard";
 
+import * as Ble from '@/modules/expo-ble';
+
 export default function Index() {
   const router = useRouter();
   const keyboardStyle = useSelector((state: RootState) => state.keyboard.style);
@@ -18,6 +20,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Theme: {Ble.getTheme()}</Text>
+      </View>
       <View style={{ flexDirection: "row", gap: 24, marginBottom: 8 }}>
         <Button
           title="Select layout"
